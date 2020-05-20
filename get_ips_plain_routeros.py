@@ -4,6 +4,7 @@ import sys
 import argparse
 import os, pprint
 import get_ips
+from time import gmtime, strftime
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process some contiries.')
@@ -19,7 +20,8 @@ if __name__ == "__main__":
 
     filename = 'acs_url.csv'
     
-    out.writelines(['/ip firewall address-list remove [find list=banks]\n/ip firewall address-list\n'])
+    out.writelines(['# Generated at ' + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + ' GMT \n\n'])
+    out.writelines(['/ip firewall address-list\nremove [find list=banks]\n'])
     
     with open(filename, 'rb') as csvFile:
         reader = csv.reader(csvFile, delimiter=',', quotechar='"')
