@@ -4,6 +4,7 @@ import shutil
 import csv
 import logging
 
+
 country = 'ru'
 
 def get_ips(row):
