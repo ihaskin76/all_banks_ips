@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     filename = 'acs_url.csv'
     
-    out.writelines(['/ip firewall address-list\nremove [find list=banks]\n'])
+    out.writelines(['/ip firewall address-list remove [find list=banks]\nip firewall address-list\n'])
     
     with open(filename, 'rb') as csvFile:
         reader = csv.reader(csvFile, delimiter=',', quotechar='"')
