@@ -23,7 +23,9 @@ def get_ips(row):
 
 if __name__ == "__main__":
     
-    logging.basicConfig(level=logging.INFO)
+    fmt = '# %(levelname)-s [%(asctime)s] %(message)s'
+    date_fmt = '%H:%M:%S'
+    logging.basicConfig(format=fmt, level='INFO', datefmt=date_fmt)
 
     filename = 'acs_url.csv'
     tempfile = NamedTemporaryFile(delete=False)
