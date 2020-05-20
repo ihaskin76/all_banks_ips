@@ -4,6 +4,7 @@ import shutil
 import csv
 import logging
 
+country = 'ru'
 
 def get_ips(row):
     try:
@@ -27,9 +28,15 @@ if __name__ == "__main__":
     tempfile = NamedTemporaryFile(delete=False)
 
     with open(filename, 'rb') as csvFile, tempfile:
-        reader = csv.reader(csvFile, delimiter=',', quotechar='"')
+        reader = csv.reader(csvFile, delimiter=',', quotechar='"')     
+        
+        reader = filter(lambda x: x[2] in country, reader)
+        
         writer = csv.writer(tempfile, delimiter=',', quoting=csv.QUOTE_ALL)
+        
         for row in reader:
+        
+            print(row)
             writer.writerow(get_ips(row))
-
+                
     shutil.move(tempfile.name, filename)
