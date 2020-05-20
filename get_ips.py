@@ -36,7 +36,6 @@ if __name__ == "__main__":
         
         for row in reader:
         
-            print(row)
             writer.writerow(get_ips(row))
                 
     shutil.move(tempfile.name, filename)
